@@ -1,3 +1,5 @@
+# This sets up the python writing bot for Qichwabase. It is imported into the writing scripts
+
 import traceback, time, re, os
 from pathlib import Path
 from config_private import wb_bot_user
