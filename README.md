@@ -9,5 +9,5 @@ This repo contains results from work on miniproject on Quechua language
 ## Ways of translating
 {% include available_translations.html%}
 
-## The descriptions
+## Words without translations in other languages
 {% include words_description.html%}
