@@ -6,7 +6,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     existing_lexemes = {}
     for item in done_csv:
         try:
-            existing_lexemes[item.split('/t')[0]] = item.split('/t')[1]
+            existing_lexemes[item.split('\t')[0]] = item.split('\t')[1]
         except:
             pass
     # print(str(done_items))
@@ -18,7 +18,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     done_items = {}
     for item in done_csv:
         try:
-            done_items[item.split('/t')[0]] = item.split('/t')[1]
+            done_items[item.split('\t')[0]] = item.split('\t')[1]
         except:
             pass
     # print(str(done_items))
@@ -61,5 +61,5 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
 
         lexeme.write()
         with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-sense-descriptions.csv', "a", encoding="utf-8") as donefile:
-            donefile.write(id+'/t'+lexeme.id+'\n')
+            donefile.write(id+'\t'+lexeme.id+'\n')
         print('Finished writing to '+lexeme.id)
