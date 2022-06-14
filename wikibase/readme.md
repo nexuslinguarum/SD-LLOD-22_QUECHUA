@@ -2,6 +2,10 @@
 
 https://qichwa.wikibase.cloud
 
+## qwbi.py
+
+This contains the setup of a bot for interaction with the wikibase, using [WikibaseIntegrator version 0.12](https://github.com/LeMyst/WikibaseIntegrator/tree/rewrite-wbi).
+
 ## create_lexeme.py
 
 This was used in June 2022 for upload of lexemes and POS. Input was 'lemma-upload.csv'.
