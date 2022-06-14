@@ -1,7 +1,7 @@
 import qwbi
 import csv, time
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-lemma-uploads.csv', 'r', encoding="utf-8") as donefile:
+with open('done-lemma-uploads.csv', 'r', encoding="utf-8") as donefile:
     done_csv = donefile.read().split('\n')
     done_items = {}
     for item in done_csv:
@@ -13,7 +13,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     print('\nThere are '+str(len(done_items))+' already uploaded items.')
     time.sleep(2)
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/pos-mapping.csv', 'r', encoding="utf-8") as posfile:
+with open('pos-mapping.csv', 'r', encoding="utf-8") as posfile:
     pos_csv = csv.DictReader(posfile, delimiter="\t")
     pos_mapping = {}
     for item in pos_csv:
@@ -22,7 +22,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     print('\nThere are '+str(len(pos_mapping))+' POS mappings.')
     time.sleep(2)
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/lemma-upload.csv', encoding="utf-8") as csvfile: # source file
+with open('lemma-upload.csv', encoding="utf-8") as csvfile: # source file
     rows = csv.DictReader(csvfile, delimiter="\t")
 
     for row in rows:
@@ -49,5 +49,5 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
         statements['replace'].append(qwbi.Item(value="Q9", prop_nr="P7"))
 
         lexeme_id = qwbi.itemwrite(newlexeme, statements, clear=False)
-        with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-lemma-uploads.csv', "a", encoding="utf-8") as donefile:
+        with open('done-lemma-uploads.csv', "a", encoding="utf-8") as donefile:
             donefile.write(id+'\t'+lexeme_id+'\n')
