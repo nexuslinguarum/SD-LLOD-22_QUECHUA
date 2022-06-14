@@ -16,7 +16,7 @@ All interim ID from the source CSV correspond to wikibase lexeme entities, as in
 
 
 Problems:
-+ if there are several lexemes in the lexemes column separated by semicolon, only the last of these is used for creating the wikibase lexeme. Fix TBD.
++ if there are several lexemes in the lexemes column separated by semicolon, only the last of these is used as lemma when creating the wikibase lexeme. Fix to be discussed: Treat as synonyms, i.e. create a new lexeme for each, and link their sense(s) as synonym sense(s) to each other?
 + we have ignored "fon." POS ("phoneme"). These have an interim ID. A POS entity for "fon." has been created (Q44).
 + we have ignored lexemes not starting with a alphabet letter (these have no interim ID, see 'datasources/MASTER_runasimi_original_with_id.ods' starting at line 25,204)
 
