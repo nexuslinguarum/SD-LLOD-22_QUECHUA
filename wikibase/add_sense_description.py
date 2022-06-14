@@ -1,7 +1,7 @@
 import qwbi
 import csv, time
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-lemma-uploads.csv', 'r', encoding="utf-8") as donefile:
+with open('done-lemma-uploads.csv', 'r', encoding="utf-8") as donefile:
     done_csv = donefile.read().split('\n')
     existing_lexemes = {}
     for item in done_csv:
@@ -13,7 +13,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     print('\nThere are '+str(len(existing_lexemes))+' already uploaded lexemes.')
     time.sleep(2)
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-sense-descriptions.csv', 'r', encoding="utf-8") as donefile:
+with open('done-sense-descriptions.csv', 'r', encoding="utf-8") as donefile:
     done_csv = donefile.read().split('\n')
     done_items = {}
     for item in done_csv:
@@ -25,16 +25,16 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
     print('\nThere are '+str(len(done_items))+' already uploaded sense descriptions.')
     time.sleep(2)
 
-with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/sense-description-upload.csv', encoding="utf-8") as csvfile: # source file
+with open('sense-description-upload.csv', encoding="utf-8") as csvfile: # source file
     rows = csv.DictReader(csvfile, delimiter="\t")
 
     for row in rows:
 
         print('\nWill now process',str(row))
         #print(str(row))
-        if ";" in str(row):
-            print('This sense description group contains semicolon(s): polysemous item, skipped in this run.')
-            continue
+        if ";" in row['English'] and ";" in row['Deutsch'] and ";" in row['Español']:
+            print('This sense description group contains semicolon(s) in all translation fields: polysemous item, skipped in this run.')
+            continue # we assume that if a semicolon appears IN ALL THREE translations, it is a polysemous quechua lexeme; this is skipped in this script!!
         id = row['id']
         if id in done_items:
             continue
@@ -60,6 +60,7 @@ with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Minipr
         lexeme.senses.add(sense)
 
         lexeme.write()
-        with open('C:/Users/dlindemann001/Documents/GDrive/Forschung/SD-LLOD 2022/Miniproject_Quechua/done-sense-descriptions.csv', "a", encoding="utf-8") as donefile:
+        with open('done-sense-descriptions.csv', "a", encoding="utf-8") as donefile:
             donefile.write(id+'\t'+lexeme.id+'\n')
         print('Finished writing to '+lexeme.id)
+        time.sleep(1)
