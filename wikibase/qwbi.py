@@ -2,6 +2,7 @@ import traceback, time, re, os
 from pathlib import Path
 from config_private import wb_bot_user
 from config_private import wb_bot_pwd
+from config_private import wd_user_agent
 from wikibaseintegrator import wbi_login, WikibaseIntegrator
 from wikibaseintegrator.datatypes.string import String
 from wikibaseintegrator.datatypes.externalid import ExternalID
@@ -35,8 +36,6 @@ PREFIX qpq: <https://qichwa.wikibase.cloud/prop/qualifier/>
 PREFIX qpr: <https://qichwa.wikibase.cloud/prop/reference/>
 PREFIX qno: <https://qichwa.wikibase.cloud/prop/novalue/>
 """
-
-wd_user_agent = "https://qichwa.wikibase.cloud user DL2204bot david.lindemann@ehu.eus"
 
 def itemwrite(qwbitem, statements, clear=False, retry_after=10): # statements = {'append':[],'replace':[]}
 	if clear:
